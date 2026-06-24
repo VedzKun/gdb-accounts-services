@@ -221,7 +221,7 @@ async def initialize_db(database_url: str, min_size: int = 5, max_size: int = 20
     try:
         async with db.get_connection() as conn:
             accounts_exists = await conn.fetchval(
-                "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'accounts')"
+                "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = current_schema() AND table_name = 'accounts')"
             )
             if not accounts_exists:
                 logger.info("📋 Core table 'accounts' does not exist. Running accounts_schema.sql...")
@@ -252,7 +252,7 @@ async def initialize_db(database_url: str, min_size: int = 5, max_size: int = 20
             
             # Ensure accounts_audit table exists as well
             audit_exists = await conn.fetchval(
-                "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'accounts_audit')"
+                "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = current_schema() AND table_name = 'accounts_audit')"
             )
             if not audit_exists and accounts_exists:
                 logger.info("📋 Creating accounts_audit table and index...")
