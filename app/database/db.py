@@ -45,7 +45,7 @@ class DatabaseManager:
             asyncpg.PostgresError: If connection fails
         """
         try:
-            self.pool = await asyncpg.create_pool(dsn=self.database_url, init=set_schema_search_path,
+            self.pool = await asyncpg.create_pool(dsn=self.database_url, setup=set_schema_search_path,
                 min_size=self.min_size,
                 max_size=self.max_size,
                 timeout=10,
