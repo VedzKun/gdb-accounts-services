@@ -1,69 +1,51 @@
-# ================================================================
-# Accounts Service - Git Ignore Configuration
-# ================================================================
+# ===========================
+# Environment & Secrets
+# ===========================
+.env
+.env.*
+!.env.example
+!.env.sample
+*.env
 
+# ===========================
 # Python
+# ===========================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
+.eggs/
 *.egg
-MANIFEST
-
-# Virtual Environment
+.venv/
 venv/
-ENV/
 env/
-.venv
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+*.log
 
-# IDE
-.vscode/
+# ===========================
+# Node / Frontend
+# ===========================
+node_modules/
+dist/
+.next/
+.nuxt/
+.output/
+.cache/
+*.local
+
+# ===========================
+# IDE & OS
+# ===========================
 .idea/
+.vscode/
 *.swp
 *.swo
-*~
 .DS_Store
-
-# Logs and Databases
-logs/
-*.log
-*.db
-*.sqlite
-*.sqlite3
-
-# Environment Variables
-.env
-.env.local
-.env.*.local
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.hypothesis/
-
-# OS
 Thumbs.db
-.DS_Store
-
-# Project specific
-*.pid
-.socket
